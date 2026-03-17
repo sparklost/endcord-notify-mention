@@ -25,6 +25,6 @@ All extension options are under `[main]` section in endcord config. This extensi
 ## Disclaimer
 > [!WARNING]
 > Using third-party client is against Discord's Terms of Service and may cause your account to be banned!  
-> **Use endcord and/or this extension at your own risk!**
-> If this extension is modified, it may be used for harmful or unintended purposes.
-> **The developer is not responsible for any misuse or for actions taken by users.**
+> **Use endcord and/or this extension at your own risk!**  
+> If this extension is modified, it may be used for harmful or unintended purposes.  
+> **The developer is not responsible for any misuse or for actions taken by users.**  

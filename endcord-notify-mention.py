@@ -4,8 +4,8 @@ import re
 from endcord import peripherals
 
 EXT_NAME = "Notify Mention"
-EXT_VERSION = "0.1.0"
-EXT_ENDCORD_VERSION = "1.3.0"
+EXT_VERSION = "0.2.0"
+EXT_ENDCORD_VERSION = "1.4.0"
 EXT_DESCRIPTION = "An extension that sends desktop notification when specific regexes or words are matched in message in specific channels or guilds"
 EXT_SOURCE = "https://github.com/sparklost/endcord-notify-mention"
 logger = logging.getLogger(__name__)
@@ -32,6 +32,39 @@ class Extension:
                 self.contains.append([x.lower() for x in word])
             else:
                 self.contains.append(word.lower())
+
+
+    def on_message_event_is_irrelevant(self, message, optext):
+        """Check if message is relevant or not"""
+        if optext != "MESSAGE_CREATE":
+            return
+
+        if self.patterns:
+            text = message["content"]
+            for expression in self.patterns:
+                match = re.search(expression, text)
+                if match:
+                    break
+            else:
+                return
+
+        elif self.contains:
+            text = message["content"].lower()
+            for expression in self.contains:
+                if isinstance(expression, list):
+                    if all(sub in text for sub in expression):
+                        match = str(expression)
+                        break
+                elif expression in text:
+                    match = expression
+                    break
+            else:
+                match = None
+        else:
+            match = None
+
+        return bool(match)
+
 
     def on_message_event(self, new_message):
         """Ran when message event is received"""
