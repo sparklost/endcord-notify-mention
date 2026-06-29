@@ -4,8 +4,8 @@ import re
 from endcord import peripherals
 
 EXT_NAME = "Notify Mention"
-EXT_VERSION = "0.2.0"
-EXT_ENDCORD_VERSION = "1.4.0"
+EXT_VERSION = "0.2.1"
+EXT_ENDCORD_VERSION = "1.5.0"
 EXT_DESCRIPTION = "An extension that sends desktop notification when specific regexes or words are matched in message in specific channels or guilds"
 EXT_SOURCE = "https://github.com/sparklost/endcord-notify-mention"
 logger = logging.getLogger(__name__)
