@@ -10,7 +10,7 @@ Available options:
 - Or use endcord client-side command `install_extension sparklost/endcord-notify-mention`
 
 ## Configuration
-All extension options are under `[main]` section in endcord config. This extension options are always prepended with `ext_notify_mention_`.
+All extension options are under `[main]` section in endcord config. This extension options are always prefixed with `ext_notify_mention_`.
 
 ### Settings options
 - `ext_notify_mention_match_regexes = []`  
