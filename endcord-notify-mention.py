@@ -18,7 +18,7 @@ class Extension:
         self.app = app
         patterns = app.config.get("ext_notify_mention_match_regexes", [])
         contains = app.config.get("ext_notify_mention_match_contains", [])
-        self.listen_channel = app.config.get("ext_notify_mention_listen_channel", [])
+        self.listen_channels = app.config.get("ext_notify_mention_listen_channels", [])
         self.listen_guilds = app.config.get("ext_notify_mention_listen_guilds", [])
         self.patterns = []
         for regex in patterns:
@@ -69,7 +69,7 @@ class Extension:
     def on_message_event(self, new_message):
         """Ran when message event is received"""
         data = new_message["d"]
-        if data["channel_id"] not in self.listen_channel and data["guild_id"] not in self.listen_guilds:
+        if data["channel_id"] not in self.listen_channels and data["guild_id"] not in self.listen_guilds:
             return
 
         if new_message["op"] == "MESSAGE_CREATE" and data["user_id"] != self.app.my_id and data["user_id"] not in self.app.blocked:
